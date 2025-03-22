@@ -84,6 +84,10 @@ source ~/.bashrc
 echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.zshrc
 source ~/.zshrc
 
+# For Zsh users (if .zshrc is not working)
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshenv
+source ~/.zshenv
+
 # Verify installation
 myip
 ```
