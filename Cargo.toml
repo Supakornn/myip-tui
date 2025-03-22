@@ -4,6 +4,11 @@ version = "0.1.0"
 edition = "2021"
 authors = ["supakornn"]
 description = "A clean terminal UI for network interface information"
+license = "GPL-3.0"
+repository = "https://github.com/supakornn/myip"
+readme = "README.md"
+keywords = ["network", "terminal", "ui", "monitoring", "ip"]
+categories = ["command-line-utilities", "network-programming", "visualization"]
 
 [dependencies]
 tui = { version = "0.19", default-features = false, features = ['crossterm'] }
