@@ -65,10 +65,10 @@
 
 ```bash
 # Install the latest version
-cargo install myip
+cargo install myip-tui
 
 # Or specify a version
-cargo install myip@0.1.0
+cargo install myip-tui@0.1.0
 ```
 
 ### Setting up PATH
@@ -85,7 +85,7 @@ echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.zshrc
 source ~/.zshrc
 
 # Verify installation
-myip -h
+myip-tui -h
 ```
 
 ## Usage
@@ -93,7 +93,7 @@ myip -h
 Simply run the application from your terminal:
 
 ```bash
-myip
+myip-tui
 ```
 
 ### Keyboard Controls
