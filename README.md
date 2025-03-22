@@ -84,8 +84,6 @@ source ~/.bashrc
 echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.zshrc
 source ~/.zshrc
 
-# Verify installation
-myip-tui -h
 ```
 
 ## Usage
