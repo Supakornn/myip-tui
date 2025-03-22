@@ -1,0 +1,19 @@
+[package]
+name = "myip"
+version = "0.1.0"
+edition = "2021"
+authors = ["supakornn"]
+description = "A clean terminal UI for network interface information"
+
+[dependencies]
+tui = { version = "0.19", default-features = false, features = ['crossterm'] }
+crossterm = "0.25"
+anyhow = "1.0"
+local-ip-address = "0.5.1"
+public-ip = "0.2"
+tokio = { version = "1", features = ["full"] }
+sysinfo = "0.27.8"
+nix = "0.26.2"
+futures = "0.3"
+gethostname = "0.4.1"
+reqwest = { version = "0.11", features = ["json", "default-tls"] } 
