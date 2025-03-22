@@ -84,6 +84,8 @@ source ~/.bashrc
 echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.zshrc
 source ~/.zshrc
 
+# Verify installation
+myip
 ```
 
 ## Usage
@@ -91,7 +93,7 @@ source ~/.zshrc
 Simply run the application from your terminal:
 
 ```bash
-myip-tui
+myip
 ```
 
 ### Keyboard Controls

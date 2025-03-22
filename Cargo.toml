@@ -10,6 +10,10 @@ readme = "README.md"
 keywords = ["network", "terminal", "ui", "monitoring", "ip"]
 categories = ["command-line-utilities", "network-programming", "visualization"]
 
+[[bin]]
+name = "myip"
+path = "src/main.rs"
+
 [dependencies]
 tui = { version = "0.19", default-features = false, features = ['crossterm'] }
 crossterm = "0.25"
