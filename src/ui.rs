@@ -1,5 +1,5 @@
 use crate::network::NetworkInfo;
-use tui::{
+use ratatui::{
     backend::Backend,
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
@@ -46,7 +46,7 @@ fn render_header<B: Backend>(f: &mut Frame<B>, area: Rect, network_info: &Networ
             .title("MyIP")
             .border_style(Style::default().fg(Color::Blue)))
         .style(Style::default().fg(Color::White))
-        .alignment(tui::layout::Alignment::Center);
+        .alignment(ratatui::layout::Alignment::Center);
 
     f.render_widget(header, area);
 }
@@ -67,20 +67,26 @@ fn render_interfaces<B: Backend>(f: &mut Frame<B>, area: Rect, network_info: &Ne
         return;
     }
     
-    let constraints = if interface_count <= 2 {
+    let constraints: Vec<Rect> = if interface_count <= 2 {
         Layout::default()
             .direction(Direction::Vertical)
             .constraints(vec![Constraint::Ratio(1, interface_count as u32); interface_count])
             .split(chunks[1])
+            .into_iter()
+            .cloned()
+            .collect()
     } else {
         let rows = (interface_count + 1) / 2;
         let interfaces_area = chunks[1];
         
         let row_constraints = vec![Constraint::Ratio(1, rows as u32); rows];
-        let rows_layout = Layout::default()
+        let rows_layout: Vec<Rect> = Layout::default()
             .direction(Direction::Vertical)
             .constraints(row_constraints)
-            .split(interfaces_area);
+            .split(interfaces_area)
+            .into_iter()
+            .cloned()
+            .collect();
         
         let mut interface_areas = Vec::new();
         for row in rows_layout {
@@ -124,7 +130,7 @@ fn render_public_ip<B: Backend>(f: &mut Frame<B>, area: Rect, network_info: &Net
             .title(" External IP ")
             .border_style(Style::default().fg(Color::Magenta)))
         .style(Style::default().fg(Color::White))
-        .alignment(tui::layout::Alignment::Center);
+        .alignment(ratatui::layout::Alignment::Center);
     
     f.render_widget(paragraph, area);
 }
@@ -225,8 +231,8 @@ fn render_interface_info<B: Backend>(f: &mut Frame<B>, area: Rect, interface: &c
 }
 
 fn render_network_graph<B: Backend>(f: &mut Frame<B>, area: Rect, interface: &crate::network::Interface) {
-    use tui::widgets::{Dataset, Chart, Axis};
-    use tui::symbols;
+    use ratatui::widgets::{Dataset, Chart, Axis};
+    use ratatui::symbols;
     
     let rx_data: Vec<(f64, f64)> = interface.usage.rx_history
         .iter()
@@ -360,7 +366,7 @@ fn render_footer<B: Backend>(f: &mut Frame<B>, area: Rect) {
     let paragraph = Paragraph::new(text)
         .block(Block::default().borders(Borders::ALL))
         .style(Style::default().fg(Color::White))
-        .alignment(tui::layout::Alignment::Center);
+        .alignment(ratatui::layout::Alignment::Center);
     
     f.render_widget(paragraph, area);
 }

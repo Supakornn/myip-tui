@@ -8,7 +8,7 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io;
-use tui::{
+use ratatui::{
     backend::CrosstermBackend,
     Terminal,
 };
@@ -43,7 +43,7 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
-fn run_app<B: tui::backend::Backend>(
+fn run_app<B: ratatui::backend::Backend>(
     terminal: &mut Terminal<B>,
     mut network_info: network::NetworkInfo,
 ) -> Result<()> {
@@ -78,4 +78,4 @@ fn run_app<B: tui::backend::Backend>(
             last_tick = std::time::Instant::now();
         }
     }
-} 
+}
