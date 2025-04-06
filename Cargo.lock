@@ -922,7 +922,7 @@ dependencies = [
 
 [[package]]
 name = "myip-tui"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "anyhow",
  "crossterm 0.25.0",
