@@ -150,7 +150,7 @@ The application uses a 5-second timeout to ensure responsiveness even if connect
 
 MyIP is built with Rust and uses several key dependencies:
 
--   **tui-rs**: Terminal user interface library
+-   **ratatui**: Terminal user interface library
 -   **crossterm**: Terminal control and input handling
 -   **tokio**: Asynchronous runtime
 -   **reqwest**: HTTP client for fetching public IP
@@ -177,7 +177,7 @@ MyIP requires the following dependencies:
 
 ```toml
 [dependencies]
-tui = { version = "0.19", default-features = false, features = ['crossterm'] }
+ratatui = "0.20"
 crossterm = "0.25"
 anyhow = "1.0"
 local-ip-address = "0.5.1"
@@ -227,7 +227,7 @@ This project is licensed under the GNU General Public License v3.0 (GPL-3.0) - s
 
 ## Acknowledgements
 
--   [TUI-rs](https://github.com/fdehau/tui-rs) for the terminal interface library
+-   [ratatui](https://github.com/ratatui/ratatui) for the terminal interface library
 -   [Crossterm](https://github.com/crossterm-rs/crossterm) for terminal control
 -   [Tokio](https://tokio.rs/) for async runtime
 -   [Sysinfo](https://github.com/GuillaumeGomez/sysinfo) for system information
