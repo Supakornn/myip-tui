@@ -68,7 +68,7 @@
 cargo install myip-tui
 
 # Or specify a version
-cargo install myip-tui@0.1.0
+cargo install myip-tui@0.2.0
 ```
 
 ### Setting up PATH
