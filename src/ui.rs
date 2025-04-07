@@ -72,11 +72,11 @@ fn render_interfaces<B: Backend>(f: &mut Frame<B>, area: Rect, network_info: &Ne
             .direction(Direction::Vertical)
             .constraints(vec![Constraint::Ratio(1, interface_count as u32); interface_count])
             .split(chunks[1])
-            .into_iter()
-            .cloned()
+            .iter()
+            .copied()
             .collect()
     } else {
-        let rows = (interface_count + 1) / 2;
+        let rows = interface_count.div_ceil(2);
         let interfaces_area = chunks[1];
         
         let row_constraints = vec![Constraint::Ratio(1, rows as u32); rows];
@@ -84,8 +84,8 @@ fn render_interfaces<B: Backend>(f: &mut Frame<B>, area: Rect, network_info: &Ne
             .direction(Direction::Vertical)
             .constraints(row_constraints)
             .split(interfaces_area)
-            .into_iter()
-            .cloned()
+            .iter()
+            .copied()
             .collect();
         
         let mut interface_areas = Vec::new();
