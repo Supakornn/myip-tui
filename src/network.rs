@@ -218,17 +218,8 @@ pub async fn get_network_info() -> Result<NetworkInfo> {
         }
     }
     
-    let public_ip = match tokio::spawn(get_real_public_ip()).await {
-        Ok(Ok(ip)) => ip,
-        Ok(Err(e)) => {
-            eprintln!("Error in get_real_public_ip: {:?}", e);
-            None
-        },
-        Err(e) => {
-            eprintln!("Failed to join tokio::spawn task: {:?}", e);
-            None
-        },
-    };
+    let public_ip = (tokio::spawn(get_real_public_ip()).await).unwrap_or_default();
+
     
     Ok(NetworkInfo {
         interfaces,
