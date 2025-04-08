@@ -67,8 +67,8 @@ impl NetworkUsage {
         self.rx_history.push_back(rx_diff);
         self.tx_history.push_back(tx_diff);
         
-        self.max_rx = self.rx_history.iter().cloned().fold(1.0, f64::max);
-        self.max_tx = self.tx_history.iter().cloned().fold(1.0, f64::max);
+        self.max_rx = self.rx_history.iter().copied().fold(1.0, f64::max);
+        self.max_tx = self.tx_history.iter().copied().fold(1.0, f64::max);
     }
 }
 
@@ -219,8 +219,15 @@ pub async fn get_network_info() -> Result<NetworkInfo> {
     }
     
     let public_ip = match tokio::spawn(get_real_public_ip()).await {
-        Ok(result) => result,
-        Err(_) => None,
+        Ok(Ok(ip)) => ip,
+        Ok(Err(e)) => {
+            eprintln!("Error in get_real_public_ip: {:?}", e);
+            None
+        },
+        Err(e) => {
+            eprintln!("Failed to join tokio::spawn task: {:?}", e);
+            None
+        },
     };
     
     Ok(NetworkInfo {
@@ -233,7 +240,7 @@ pub async fn get_network_info() -> Result<NetworkInfo> {
 }
 
 async fn get_real_public_ip() -> Option<String> {
-    match timeout(Duration::from_secs(5), async {
+    (timeout(Duration::from_secs(5), async {
         let client = match reqwest::Client::builder()
             .timeout(Duration::from_secs(4))
             .build() {
@@ -263,10 +270,7 @@ async fn get_real_public_ip() -> Option<String> {
             }
         }
         None
-    }).await {
-        Ok(result) => result,
-        Err(_) => None,
-    }
+    }).await).unwrap_or_default()
 }
 
 #[allow(dead_code)]
