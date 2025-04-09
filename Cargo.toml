@@ -2,6 +2,7 @@
 name = "myip-tui"
 version = "0.2.0"
 edition = "2021"
+rust-version = "1.70"
 authors = ["supakornn"]
 description = "A clean terminal UI for network interface information"
 license = "GPL-3.0"
