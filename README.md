@@ -7,52 +7,12 @@
 <p align="center" style="font-size: 18px; font-weight: bold;">A clean, intuitive terminal UI for network interface monitoring.</p>
 
 <p align="center">
-  <a href="#features">Features</a> •
   <a href="#installation">Installation</a> •
   <a href="#usage">Usage</a> •
   <a href="#interface-details">Interface Details</a> •
 <a href="#contributing">Contributing</a>
 
 </p>
-
-## Features
-
--   **Intuitive Terminal UI**: Color-coded interface built with TUI-rs and Crossterm
--   **Real-time Interface Monitoring**: Updates every 500ms
--   **Network Information Display**:
-    -   Interface status (up/down)
-    -   IPv4 and IPv6 addresses
-    -   MAC addresses
-    -   MTU and link speed (when available)
-    -   Traffic statistics (received and transmitted bytes)
--   **Traffic Visualization**: Real-time graphs showing RX/TX activity
--   **Public IP Detection**: Attempts to fetch your public IP from multiple services
--   **Debug Information Panel**: Shows detected interfaces and diagnostic details
--   **Cross-Platform Support**: Works on Linux, macOS, and Windows
--   **Smart Interface Detection**: Skips loopback interfaces automatically
-
-## Table of Contents
-
--   [MyIP](#myip)
-    -   [Features](#features)
-    -   [Table of Contents](#table-of-contents)
-    -   [Installation](#installation)
-        -   [Prerequisites](#prerequisites)
-        -   [Using Cargo (Recommended)](#using-cargo-recommended)
-        -   [Setting up PATH](#setting-up-path)
-    -   [Usage](#usage)
-        -   [Keyboard Controls](#keyboard-controls)
-    -   [Interface Details](#interface-details)
-        -   [Main Screen Elements](#main-screen-elements)
-        -   [Network Traffic Graphs](#network-traffic-graphs)
-        -   [Public IP Detection](#public-ip-detection)
-    -   [Building from Source](#building-from-source)
-        -   [Dependencies](#dependencies)
-    -   [Troubleshooting](#troubleshooting)
-        -   [Common Issues](#common-issues)
-    -   [Contributing](#contributing)
-    -   [License](#license)
-    -   [Acknowledgements](#acknowledgements)
 
 ## Installation
 
@@ -61,7 +21,7 @@
 -   Rust toolchain (1.70 or later)
 -   Network connectivity (for public IP detection)
 
-### Using Cargo (Recommended)
+### Using Cargo
 
 ```bash
 # Install the latest version
@@ -69,27 +29,6 @@ cargo install myip-tui
 
 # Or specify a version
 cargo install myip-tui@0.2.0
-```
-
-### Setting up PATH
-
-After installation, make sure your Rust binary directory is in your PATH:
-
-```bash
-# For Bash users (add to ~/.bashrc)
-echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.bashrc
-source ~/.bashrc
-
-# For Zsh users (add to ~/.zshrc)
-echo 'export PATH=$PATH:'"$HOME"'/.cargo/bin' >> ~/.zshrc
-source ~/.zshrc
-
-# For Zsh users (if .zshrc is not working)
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshenv
-source ~/.zshenv
-
-# Verify installation
-myip
 ```
 
 ## Usage
@@ -145,49 +84,6 @@ MyIP attempts to fetch your public IP address from multiple services:
 -   myexternalip.com/raw
 
 The application uses a 5-second timeout to ensure responsiveness even if connectivity is limited.
-
-## Building from Source
-
-MyIP is built with Rust and uses several key dependencies:
-
--   **ratatui**: Terminal user interface library
--   **crossterm**: Terminal control and input handling
--   **tokio**: Asynchronous runtime
--   **reqwest**: HTTP client for fetching public IP
--   **sysinfo**: System information gathering
--   **local-ip-address**: Network interface detection
-
-To build from source:
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/myip.git
-cd myip
-
-# Build in release mode
-cargo build --release
-
-# The binary will be available at
-./target/release/myip
-```
-
-### Dependencies
-
-MyIP requires the following dependencies:
-
-```toml
-[dependencies]
-ratatui = "0.20"
-crossterm = "0.25"
-anyhow = "1.0"
-local-ip-address = "0.5.1"
-tokio = { version = "1", features = ["full"] }
-sysinfo = "0.27.8"
-nix = "0.26.2"
-futures = "0.3"
-gethostname = "0.4.1"
-reqwest = { version = "0.11", features = ["json", "default-tls"] }
-```
 
 ## Troubleshooting
 
