@@ -5,13 +5,6 @@
 </p>
 
 <p align="center" style="font-size: 18px; font-weight: bold;">A clean, intuitive terminal UI for network interface monitoring.</p>
-
-<p align="center">
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#interface-details">Interface Details</a> •
-<a href="#contributing">Contributing</a>
-
 </p>
 
 ## Installation
@@ -41,10 +34,7 @@ myip
 
 ### Keyboard Controls
 
-| Key   | Action           |
-| ----- | ---------------- |
-| `q`   | Quit application |
-| `ESC` | Quit application |
+`q` or `ESC` to quit the application
 
 ## Interface Details
 
@@ -106,28 +96,3 @@ The application uses a 5-second timeout to ensure responsiveness even if connect
 -   Ensure you're running with appropriate permissions
 -   Some virtual interfaces or non-standard interfaces may not be detected
 -   Check the debug panel to see which interfaces were detected
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0) - see the LICENSE file for details.
-
-## Acknowledgements
-
--   [ratatui](https://github.com/ratatui/ratatui) for the terminal interface library
--   [Crossterm](https://github.com/crossterm-rs/crossterm) for terminal control
--   [Tokio](https://tokio.rs/) for async runtime
--   [Sysinfo](https://github.com/GuillaumeGomez/sysinfo) for system information
--   [local-ip-address](https://github.com/EstebanBorai/local-ip-address) for network interface detection
--   [Reqwest](https://github.com/seanmonstar/reqwest) for HTTP requests
-
----
